@@ -6,11 +6,27 @@
     padding-bottom: 90px;
     background-color: #1f2833;
 }
+.products-form-main-table{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 90px;
+    background-color: #1f2833;
+    color: azure;
+}
+
+.products-form-main-table-td{
+    width: 200px;
+}
+
+.products-form-main-table-td1{
+    width: 200px;
+}
 
 .products-form-sub-main {
     display: flex;
     justify-content: center;
-    height: 550px;
+    height: 560px;
     width: 450px;
     box-shadow: 11px 12px 13px 12px #0b0c10;
     padding-top: 30px;
@@ -73,7 +89,7 @@ select {
 }
 
 option {
-    color:#c5c6c7;
+    color:black;
     padding-left: 20px;
     font-size: 20px;
 }
@@ -140,4 +156,24 @@ textarea {
 .progress {
     background-color: #c5c6c7;
     color: black;
+}
+
+.category-list-btn{
+    width: 100px;
+    height: 25px;
+    border-radius: 60px;
+    background-color: #66fcf1;
+    color: black;
+    font-size: 25px;
+    border: none;
+}
+
+.category-list-btn:hover{
+    width: 100px;
+    height: 25px;
+    border-radius: 60px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+    border: none;
 }

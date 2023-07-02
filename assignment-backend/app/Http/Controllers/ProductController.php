@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Product::get());
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create([
+           'itemCode'=>$request->itemCode,
+           'productName'=>$request->productName,
+            'categoryId' =>$request->categoryId,
+           'stock'=>$request->stock,
+           'price'=>$request->price,
+        ]);
+        return response()->json('Successfully Added!');
     }
 
     /**
@@ -69,7 +76,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $category = Product::where('id','=',$product)->first();
+        $category->update([
+            'itemCode'=>$request->itemCode,
+            'productName'=>$request->productName,
+            'categoryId' =>$request->categoryId,
+            'stock'=>$request->stock,
+            'price'=>$request->price,
+        ]);
+        return response()->json('Success!');
     }
 
     /**
