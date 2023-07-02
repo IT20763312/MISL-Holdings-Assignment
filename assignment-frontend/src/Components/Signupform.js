@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import './Signupform.css';
-import {useNavigate} from "react-router-dom";
+import Authuser from './Authuser';
+import { useNavigate } from 'react-router-dom';
 
+function Signupform() {
 
+    const navigate = useNavigate();
 
-function Signupform({setIsAuth}) {
-
-
+    const {http,setToken} = Authuser();
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
-  
-    let navigate = useNavigate();
+    const [registerName,setRegisterName] = useState("");
 
     const register = () => {
-        
+        http.post('register',{email:registerEmail,password:registerPassword,name:registerName}).then((res)=>{
+            alert("User Created Successfully!");
+        }).catch(e=>{
+            console.error(e);
+            alert("Error Signing a New User!");
+        });
     }
 
 
@@ -32,6 +37,10 @@ function Signupform({setIsAuth}) {
                         </div>
                         <div className='signup-form-details'>
                             <h1 className='signup-form-heading'>Sign-Up</h1>
+                            <div className='signup-form-details'>
+                                <input name='name' type="text" placeholder="Name" className="signup-form-name" onChange={(event) => { setRegisterName(event.target.value); }} />
+                               
+                            </div>
                             <div className='signup-form-details'>
                                 <input name='email' type="email" placeholder="Email" className="signup-form-name" onChange={(event) => { setRegisterEmail(event.target.value); }} />
                                

@@ -2,16 +2,24 @@ import React from 'react';
 import './Loginform.css';
 import {useNavigate} from "react-router-dom";
 import { useState } from 'react';
+import Authuser from './Authuser';
 
 function Loginform({setIsAuth}) {
 
+    const {http,setToken} = Authuser();
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
   
     let navigate = useNavigate();
 
     const register = () => {
-        
+        http.post('login',{email:registerEmail,password:registerPassword}).then((res)=>{
+            console.log(res);
+            setToken(res.data.user,res.data.access_token);
+        }).catch(e=>{
+            console.error(e);
+            alert("Incorrect Username or Password!");
+        });
     }
 
     return (

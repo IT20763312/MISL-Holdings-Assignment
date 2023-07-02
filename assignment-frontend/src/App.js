@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Components/Home';
@@ -9,10 +9,8 @@ import Dashboard from './Components/Pages/Dashboard';
 import Categories from './Components/Pages/Categories';
 import Products from './Components/Pages/Products';
 
-function App() {
 
-  const [isAuth, setIsAuth] = useState(false);
-  const [token, setToken] = useState("");
+function App() {
 
   return (
     <>
