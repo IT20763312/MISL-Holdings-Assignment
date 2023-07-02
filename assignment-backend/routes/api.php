@@ -27,5 +27,7 @@ Route::group(['middleware'=>'api'],function (){
     Route::post('me', [\App\Http\Controllers\AuthController::class,'me']);
 });
 
+Route::resource('categories',\App\Http\Controllers\CategoryController::class);
+
 
 
