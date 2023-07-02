@@ -87,6 +87,48 @@ class ProductController extends Controller
         return response()->json('Success!');
     }
 
+    public function updateStockAndPrice()
+    {
+        $data = Product::all();
+        $stock = -1;
+        $price = -2;
+
+        foreach ($data as $item) {
+            if ($item['categoryId']==4){
+                if ($item['stock']<=8){
+                    if ($item['stock']==0){
+                        Product::updateOrCreate(
+                            ['id' => $item['id']],
+                            [
+                                'stock' => $item['stock'],
+                                'price' => 0,
+                            ]
+                        );
+                    }else{
+                        $gadgetsPrice = $item['price']+15/100;
+                        Product::updateOrCreate(
+                            ['id' => $item['id']],
+                            [
+                                'stock' => $item['stock'],
+                                'price' => $gadgetsPrice,
+                            ]
+                        );
+                    }
+                }
+            }else{
+                Product::updateOrCreate(
+                    ['id' => $item['id']],
+                    [
+                        'stock' => $item['stock']-$stock,
+                        'price' => $item['price']-$price,
+                    ]
+                );
+            }
+        }
+
+        return response()->json(['message' => 'Stock and Price updated successfully']);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
